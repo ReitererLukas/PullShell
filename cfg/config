@@ -1,0 +1,11 @@
+format {
+  tabsize: 2
+  indent: 2
+}
+font {
+  size: 11
+  command-color: white
+  argument-color: white
+  value-color: white
+  directory-color: white
+}
