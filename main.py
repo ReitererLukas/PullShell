@@ -1,7 +1,7 @@
 import controller
 
 def on_startup():
-  controller.load_from_cfg()
+  controller.load_paths_from_cfg()
   pass
 
 if __name__ == "__main__":

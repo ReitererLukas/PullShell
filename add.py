@@ -8,7 +8,7 @@ def save_to_cfg_path(path):
   pass
 
 # add *path* [as *alias*]
-def add_Path(arguments, saved = False):
+def add_Path(arguments, files=None, folders=None, saved = False,):
   valid = False
   file_folder = (None,None)
   if len(arguments) == 1:
@@ -31,8 +31,8 @@ def add_Path(arguments, saved = False):
       pass
     pass
 
-  elif len(arguments) == 3 and arguments[1] == "as":
-    if not check_alias(arguments[2]):
+  elif len(arguments) == 3 and arguments[1] == "as" and not saved:
+    if not check_alias(arguments[2], files, folders):
       print('  Alias not valid')
       return
 
@@ -50,7 +50,7 @@ def add_Path(arguments, saved = False):
       pass
     pass
 
-  else:
+  elif not saved:
     print('  Command not found')
     pass
   return file_folder

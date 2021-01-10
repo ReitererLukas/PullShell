@@ -6,7 +6,7 @@ def list_help():
   print("  add path {as alias} - add a Path")
   
   # list content
-  print("  ls argument - list content")
+  print("  list argument - list content")
   print("    -d - list saved paths to directories")
   print("    -f - list saved paths to files")
   print("    -fd - list saved paths to files and directories")

@@ -9,3 +9,6 @@ font {
   value-color: white
   directory-color: white
 }
+history {
+  saved_items: 100
+}

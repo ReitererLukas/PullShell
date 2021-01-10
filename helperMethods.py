@@ -1,5 +1,7 @@
 import os
 
+blacklisted_signs = ['!','"','§','$','%','&','/','(',')','=','{','[',']','}','?','\',"´",','*','+','~','#',"'",'.',':',',',';','|','>','<']
+
 def check_folder(path):
   return os.path.isdir(path)
 
@@ -12,7 +14,7 @@ def save_to_cfg_path(path):
   f.close()
   pass
 
-def check_alias(alias):
+def check_alias(alias, files, folders):
   for f in files+folders:
     if f.getAlias() == alias:
       return False

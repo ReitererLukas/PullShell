@@ -22,7 +22,7 @@ def list_files(indent_multiplier, files):
     pass
   pass
 
-def list_content(arguments,files,folders):
+def list_path(arguments,files,folders):
   if len(arguments) == 1:
     if arguments[0] == "help":
       help()
@@ -53,7 +53,7 @@ def list_content(arguments,files,folders):
   pass
 
 def help():
-  print("  ls argument - list content")
+  print("  list argument - list content")
   print("    -d - list saved paths to directories")
   print("    -f - list saved paths to files")
   print("    -fd - list saved paths to files and directories")
