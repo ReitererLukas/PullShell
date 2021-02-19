@@ -1,13 +1,6 @@
-from helperMethods import check_folder, check_file
-
-def check_if_path_alias_exists(argument,files_folders):
-  for f in files_folders:
-    if f.getAlias() == argument or f.getPath() == argument:
-      return f
-      pass
-    pass
-  return None
-  pass
+from helperMethods import check_folder, check_file, check_if_path_alias_exists
+from help import remove_path_help
+from os.path import normpath
 
 def remove_from_cfg_path(path):
   f = open(".\\cfg\\path.txt","r")
@@ -17,7 +10,9 @@ def remove_from_cfg_path(path):
   f = open(".\\cfg\\path.txt","w")
   str_of_paths = ""
   for p in paths:
-    str_of_paths += p+"\n"
+    if p != "":
+      str_of_paths += p+"\n"
+      pass
     pass
   f.write(str_of_paths)
   f.close()
@@ -29,6 +24,7 @@ def remove(argument, files, folders):
     print('  Alias or Path not found')
     return
     pass
+  
   remove_from_cfg_path(path)
   if check_file(path.getPath()):
     files.remove(path)
@@ -38,7 +34,11 @@ def remove(argument, files, folders):
     pass
   pass
 
-def remove_path(arguments, files, folders):
+# wird vom Controller aus aufgerufen
+def remove_path(arguments, controller):
+  files = controller.get_files()
+  folders = controller.get_folders()
+  
   if len(arguments) == 1:
     if arguments[0] == "help":
       help()
@@ -49,17 +49,16 @@ def remove_path(arguments, files, folders):
       inp = input("Do you wanna do continue?[Y/N] ")
       pass
     if inp == "Y" or inp == "y":    
-      remove(arguments[0], files, folders)
+      remove(normpath(arguments[0]), files, folders)
       pass
     pass
   elif len(arguments) == 2:
     if arguments[0] == "-f":
-      remove(arguments[1], files, folders)
+      remove(normpath(arguments[1]), files, folders)
       pass
     pass
   pass
 
 def help():
-  print("  rmp argument [path|alias]- remove path")
-  print("    -f - deletes without asking")
+  remove_path_help()
   pass

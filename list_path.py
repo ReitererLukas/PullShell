@@ -1,3 +1,7 @@
+from help import list_path_help
+
+# gibt alle Folder aus
+# Indent als Parameter gibt an wie viele Leerzeichen eingerückt ist
 def list_folders(indent_multiplier, folders):
   indent = " "*indent_multiplier
   if len(folders) == 0:
@@ -10,6 +14,8 @@ def list_folders(indent_multiplier, folders):
     pass
   pass
 
+# gibt alle Files aus
+# Indent als Parameter gibt an wie viele Leerzeichen eingerückt ist
 def list_files(indent_multiplier, files):
   indent = " "*indent_multiplier
   if len(files) == 0:
@@ -22,7 +28,10 @@ def list_files(indent_multiplier, files):
     pass
   pass
 
-def list_path(arguments,files,folders):
+def list_path(arguments,controller):
+  files = controller.get_files()
+  folders = controller.get_folders()
+  
   if len(arguments) == 1:
     if arguments[0] == "help":
       help()
@@ -53,9 +62,5 @@ def list_path(arguments,files,folders):
   pass
 
 def help():
-  print("  list argument - list content")
-  print("    -d - list saved paths to directories")
-  print("    -f - list saved paths to files")
-  print("    -fd - list saved paths to files and directories")
-  print("    -df - list saved paths to directories and files")
+  list_path_help()
   pass
