@@ -1,10 +1,11 @@
+# fasst Pfade und Aliasse zusammen
 class Path:
-  def __init__(self, path, alias = None):
-    self.path = path
-    self.alias = alias
+  def __init__(self, path: str, alias: str = None):
+    self.path: str = path
+    self.alias: str = alias
     pass
 
-  def __str__(self):
+  def __str__(self) -> str:
     if self.alias == None:
       return f"{self.path}"
       pass
@@ -13,10 +14,10 @@ class Path:
       pass
     pass
 
-  def getAlias(self):
+  def getAlias(self) -> str:
     return '' if self.alias == None else self.alias
 
-  def getPath(self):
+  def getPath(self) -> str:
     return self.path
   pass
 
